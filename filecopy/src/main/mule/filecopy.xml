@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="5d030b3a-9f56-4944-b1a6-f5ca56e40bc1" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c1d07c5e-5c0d-47e3-bc5f-5d212762b7f4" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="filecopyFlow" doc:id="c39e3786-5ca4-44b2-8b95-d24a9c73bee5" >
+		<http:listener doc:name="Listener" doc:id="6548d0e4-e336-478a-912b-97314ef533dd" config-ref="HTTP_Listener_config" path="filecopy"/>
+		<file:copy doc:name="Copy" doc:id="a098fdd4-e563-4da8-98e4-cf36cdfcad09" config-ref="File_Config" sourcePath="C:\Users\sejal\Desktop\source\123.txt" targetPath="C:\Users\sejal\Desktop\destination"/>
+	</flow>
+</mule>
